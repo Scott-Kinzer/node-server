@@ -1,4 +1,5 @@
 const express = require('express');
+const {userRouter} = require('./routes');
 
 const app = express();
 
@@ -6,20 +7,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 
-app.get('/', (req, res) => {
-    // console.log(req);
 
-    res.end('GeeksforGeeks');
-
-});
-
-app.post('/data', (req, res) => {
-    console.log(req.body);
-
-    res.end('GeeksforGeeks');
-
-});
-
+app.use('/', userRouter);
 
 app.listen(5000, (error) => {
     if (error) {
